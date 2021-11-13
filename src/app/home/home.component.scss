@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans&family=Poppins&family=Shadows+Into+Light&family=Zilla+Slab&display=swap');
+
+*{
+  font-family: 'Poppins', sans-serif;
+}
+textarea{
+  resize: none;
+  outline: black !important;
+  border: 2px solid black !important;
+  border-radius: 10px !important;
+  -webkit-border-radius: 10px !important;
+  -moz-border-radius: 10px !important;
+  -ms-border-radius: 10px !important;
+  -o-border-radius: 10px !important;
+}
+textarea:focus{
+  box-shadow: none;
+}
+.w-90{
+  width: 90% !important;
+}
+i{
+  font-family: 'Font Awesome 5 Free';
+  color: rgba(137 207 240);
+  font-size: 20px;
+}
+img{
+  width: 20px;
+}
+.comments{
+  background-color: rgb(245, 245, 245);
+  padding: 20px;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+}
+.btn:focus{
+  outline: none;
+  box-shadow: none !important;
+}

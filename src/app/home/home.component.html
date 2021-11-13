@@ -1,0 +1,48 @@
+<div>
+
+  <div class="container py-5 ">
+    <h5 class="d-inline">Post title </h5>
+    <span class="ms-3">by username</span>
+    <p class="float-end">9 days ago</p>
+    <div class="py-3">
+      <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus
+        sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. <br> Praesent commodo cursus magna, vel
+        scelerisque nisl consectetur et. Vivamus
+        sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. <br> Praesent commodo cursus magna, vel
+        scelerisque nisl consectetur et. Vivamus
+        sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. <br> Praesent commodo cursus magna, vel
+        scelerisque nisl consectetur et. Vivamus
+        sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. <br> Praesent commodo cursus magna, vel
+        scelerisque nisl consectetur et. Vivamus
+        sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. </p>
+    </div>
+
+    <div class="w-90 m-auto">
+      <span *ngIf="counter !== 0"> {{counter}} comments </span>
+      <textarea id="txt" (keydown.enter)="getText($event)" cols="30" class="form-control p-3" rows="5"
+        placeholder="leave your comment"></textarea>
+    </div>
+
+    <div>
+      <div class="mt-5">
+        <div *ngIf="counter !== 0">
+          <p *ngIf="counter<5">last {{counter}} comments</p>
+          <p *ngIf="counter>=5">last {{minCommentsNumber}} comments</p>
+        </div>
+        <div class="my-3 comments" *ngFor="let content of contents | slice:0:minCommentsNumber">
+          <div class="d-flex align-items-center justify-content-between">
+            <p><img [src]="content.userimage" alt="user image"><span class="ms-3">{{content.userName}}</span></p>
+            <p>{{content.timePassed}}</p>
+          </div>
+          <div class="comment">
+            <p>{{content.commentText}}</p>
+          </div>
+        </div>
+      </div>
+      <button class="btn btn-info" *ngIf="counter>5 && minCommentsNumber!==counter" (click)="loadMore()">...load
+        more</button>
+      <button class="btn btn-danger" *ngIf="minCommentsNumber==contents.length && minCommentsNumber > 5" (click)="showLess()">...show less</button>
+    </div>
+
+  </div>
+</div>
