@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { CommentsDBService } from '../comments-db.service';
 import { Comment } from '../models/comment.model';
 
@@ -10,13 +11,13 @@ import { Comment } from '../models/comment.model';
 export class HomeComponent implements OnInit {
   contents: any[] = [];
 
-  txt = document.getElementById('txt');
-
   minCommentsNumber: number = 5;
 
-  start: any;
-
   counter: any;
+
+  commentForm: FormGroup = new FormGroup({
+    comment: new FormControl(null, [Validators.required, Validators.minLength(3)])
+  })
 
   constructor(private _CommentsDBService: CommentsDBService) { }
 
@@ -33,17 +34,22 @@ export class HomeComponent implements OnInit {
 
 
 
+  postComment() {
+      this.getText(this.commentForm.value.comment)
+      this.commentForm.reset();
+  }
+
+
   getText(e: any) {
     let timePosted = new Date();
-    let reply: Comment = new Comment(e.target.value, timePosted); //pass the text and the time the comment was posted to the database
-    if (!e.target.value) {
+    let reply: Comment = new Comment(e, timePosted); //pass the text and the time the comment was posted to the database
+    if (!e) {
       return;
     }
     this._CommentsDBService.postComment(reply).subscribe((res) => {
       let newComments: Comment[] = this.contents;
       newComments.push(reply); //push the last comment to the database
       this.display(newComments); //display last version of database without fetching the comments from database again to save resources
-      e.target.value = '';
       this.minCommentsNumber = 5;
       this.counter++;
       this.counterUpdating();
@@ -52,10 +58,9 @@ export class HomeComponent implements OnInit {
 
   //update the number of comments in database
   counterUpdating() {
-    this._CommentsDBService.updateCounter(this.counter).subscribe((res) => {
-      console.log(res);
-    });
+    this._CommentsDBService.updateCounter(this.counter).subscribe();
   }
+
 
   //fetch comments from database
   getComments() {

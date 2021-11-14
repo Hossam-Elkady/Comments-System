@@ -17,12 +17,14 @@
         sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. </p>
     </div>
 
-    <div class="w-90 m-auto">
-      <span *ngIf="counter !== 0"> {{counter}} comments </span>
-      <textarea id="txt" (keydown.enter)="getText($event)" cols="30" class="form-control p-3" rows="5"
-        placeholder="leave your comment"></textarea>
-    </div>
-
+    <form action="" [formGroup]="commentForm" (ngSubmit)="postComment()">
+      <div class="w-90 m-auto">
+        <span *ngIf="counter !== 0"> {{counter}} comments </span>
+        <textarea id="txt" (keydown.enter)="postComment()" cols="30" class="form-control p-3" rows="5" placeholder="leave your comment"
+          formControlName="comment"></textarea>
+        <button type="submit" class="btn btn-primary float-end mt-3">Comment</button>
+      </div>
+    </form>
     <div>
       <div class="mt-5">
         <div *ngIf="counter !== 0">
@@ -41,8 +43,11 @@
       </div>
       <button class="btn btn-info" *ngIf="counter>5 && minCommentsNumber!==counter" (click)="loadMore()">...load
         more</button>
-      <button class="btn btn-danger" *ngIf="minCommentsNumber==contents.length && minCommentsNumber > 5" (click)="showLess()">...show less</button>
+      <button class="btn btn-danger" *ngIf="minCommentsNumber==contents.length && minCommentsNumber > 5"
+        (click)="showLess()">...show less</button>
     </div>
+
+
 
   </div>
 </div>
