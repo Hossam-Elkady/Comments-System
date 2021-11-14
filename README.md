@@ -1,6 +1,9 @@
 ## Comment System 
 
-#### an Angular Project that takes comments the user enters and get its time and posts them on a firebase database and then displays them on a simple HTML and CSS design.
+#### an Angular Project that takes comments the user enters and get its time and posts them on a firebase database and then displays them on a simple HTML and CSS design, and all of them are displayed in a sorted way acoording its time. 
+#### used firebase database to post,get comments and update the comments number which is fetched from database one time once the web page is loaded then it's refreshing with every single comment posted without posting on database to save sources
+
+
 
 ## Live Demo 
 #### https://hossam-elkady.github.io/Comments-System/
