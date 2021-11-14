@@ -1,3 +1,13 @@
+## Comment System 
+
+#### an Angular Project that takes comments the user enters and get its time and posts them on a firebase database and then displays them on a simple HTML and CSS design.
+
+## Live Demo 
+#### https://hossam-elkady.github.io/Comments-System/
+
+
+
+
 # ShowComments
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.10.
